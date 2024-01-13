@@ -35,7 +35,7 @@ const App = () => {
 			console.log("Making GET Request");
 			try {
 				// GET Request
-				const response = await axios.get(URL)
+				const response = await axios.get(URL) //or use fetch here
 						 .then((response) => {
 						console.log(response)
 				}).catch(() => {
