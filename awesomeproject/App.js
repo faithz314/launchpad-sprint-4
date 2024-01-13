@@ -1,5 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import axios from "axios" //library to help make HTTP Requests 
+
 
 export default function App() {
   return (
@@ -18,3 +20,35 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+
+
+const App = () => {
+	//"Endpoint" URL where the data is located
+	const URL = "https://swapi.dev/api/people/1/"
+
+	// Set up the state to store the fetched data
+	const [data, setData] = useState([])
+
+	useEffect(() => {
+		const fetchData = async () => {
+			console.log("Making GET Request");
+			try {
+				// GET Request
+				const response = await axios.get(URL)
+						 .then((response) => {
+						console.log(response)
+				}).catch(() => {
+				})
+				// Update the state with the fetched data
+				setData(response.data)	
+			} catch (error) {
+				// Handle any errors
+        console.error('Failed to fetch data: ', error);
+			}
+		}
+
+		fetchData()
+	}, []);
+
+}
