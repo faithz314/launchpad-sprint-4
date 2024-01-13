@@ -10,4 +10,7 @@ const server = app.listen(port, () => {
   console.log(`Server listening at http://localhost:${addr.port}`);
 });
 
-module.exports = app;
+
+app.get("/Home", (req, res, next) => {
+    res.json({"message": "Hello World"});
+   });
